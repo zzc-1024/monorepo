@@ -1,0 +1,23 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "oxlint .",
+    "lint:web": "oxlint apps/web packages/ui",
+    "lint:server": "oxlint --node-plugin packages/server",
+    "format": "oxfmt .",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
+    "turbo": "^2.10.12",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.24.0"
+}

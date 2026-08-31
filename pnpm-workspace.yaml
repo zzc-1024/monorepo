@@ -1,0 +1,26 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+catalog:
+  # Vue 核心
+  vue: ^3.5.40
+  vue-tsc: ^3.3.7
+  '@vue/tsconfig': ^0.9.1
+
+  # 服务端
+  fastify: ^5.12.1
+
+  # 构建工具：Vite
+  vite: ^8.1.5
+  '@vitejs/plugin-vue': ^6.0.8
+  vite-plugin-vue-devtools: ^8.1.5
+
+  # TypeScript
+  typescript: ^6.0.3
+  '@tsconfig/node24': ^24.0.4
+  '@types/node': ^24.13.3
+  tsx: '^4.23.13'
+
+  # 其他工具
+  npm-run-all2: ^9.0.2
