@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@repo/components": "workspace:*",
+    "@repo/i18n": "workspace:*",
     "axios": "^1.20.0",
     "vue": "catalog:"
   },
