@@ -1,13 +1,19 @@
 {
-  "name": "composables",
-  "version": "1.0.0",
+  "name": "@repo/composables",
+  "version": "0.0.0",
   "description": "",
-  "keywords": [],
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "openai": "^7.15.0",
+    "vue": "catalog:"
   }
 }
