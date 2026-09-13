@@ -49,8 +49,13 @@ export default defineConfigWithVueTs(
           useAttrs: 'attrs',
         },
       ],
+      'vue/require-prop-comment': [
+        'error',
+        {
+          type: 'JSDoc',
+        },
+      ],
+      'vue/require-typed-ref': ['error'],
     },
-    'vue/require-prop-comment': ['error'],
-    'vue/require-typed-ref': ['error'],
   },
 );
