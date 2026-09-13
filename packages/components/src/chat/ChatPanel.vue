@@ -1,17 +1,17 @@
 <template>
   <McLayout class="chat-layout">
     <McLayoutHeader>
-      <McHeader :logoImg="'/favicon.ico'" :title="'Logo和产品名称'"></McHeader>
+      <McHeader :logo-img="'/favicon.ico'" :title="'Logo和产品名称'"></McHeader>
     </McLayoutHeader>
 
-    <McLayoutContent class="chat-content" :autoScroll="true" :showScrollArrow="true">
+    <McLayoutContent class="chat-content" :auto-scroll="true" :show-scroll-arrow="true">
       <template v-for="(item, index) in messages" :key="index">
         <!-- 用户消息 -->
         <McBubble
           v-if="item.role === 'user'"
           :content="item.content"
           :align="'right'"
-          :avatarConfig="{ imgSrc: '/favicon.ico' }"
+          :avatar-config="{ imgSrc: '/favicon.ico' }"
         >
           <template #top>
             <div style="text-align: right">
@@ -21,7 +21,7 @@
         </McBubble>
 
         <!-- AI消息 -->
-        <McBubble v-else :content="item.content" :avatarConfig="{ imgSrc: '/favicon.ico' }">
+        <McBubble v-else :content="item.content" :avatar-config="{ imgSrc: '/favicon.ico' }">
           <template #top>
             <div>
               <span>{{ item.name ?? '智能助手' }}</span>
@@ -34,10 +34,10 @@
     <McLayoutSender>
       <McInput
         :value="inputValue"
-        :maxLength="2000"
-        showCount
+        :max-length="2000"
+        show-count
         :loading="loading"
-        @submit="(payload: any) => emit('submit', payload)"
+        @submit="(payload: string) => emit('submit', payload)"
         @cancel="emit('cancel')"
         @change="(text: string) => emit('change', text)"
       ></McInput>
@@ -64,17 +64,26 @@ export interface MessageItem {
 }
 
 // ================= Props (接收数据) =================
-const props = defineProps<{
+defineProps<{
+  /**
+   * 聊天消息列表
+   */
   messages: MessageItem[];
+  /**
+   * 输入框的值
+   */
   inputValue: string;
+  /**
+   * 是否处于加载状态
+   */
   loading: boolean;
 }>();
 
 // ================= Emits (派发事件) =================
 const emit = defineEmits<{
-  (e: 'submit', payload: any): void;
-  (e: 'cancel'): void;
-  (e: 'change', text: string): void;
+  submit: [payload: string];
+  cancel: [];
+  change: [text: string];
 }>();
 </script>
 

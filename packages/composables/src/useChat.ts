@@ -14,7 +14,6 @@ export function useChat(options: UseChatOptions) {
 
   // ── 发送消息 ──
   async function handleSend(text: string) {
-    console.log('handleSend called with text:', text);
     const trimmed = text.trim();
     if (!trimmed || loading.value) return;
 
