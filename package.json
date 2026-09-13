@@ -4,20 +4,27 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "oxlint .",
-    "lint:web": "oxlint apps/web packages/ui",
-    "lint:server": "oxlint --node-plugin packages/server",
+    "lint": "run-s \"lint:*\"",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
     "format": "oxfmt .",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "^1.82.0",
+    "eslint-plugin-vue": "^10.11.0",
+    "jiti": "^2.7.0",
+    "npm-run-all2": "^9.0.3",
     "oxfmt": "^0.65.0",
-    "oxlint": "^1.80.0",
+    "oxlint": "^1.82.0",
     "turbo": "^2.10.12",
     "typescript": "catalog:"
   },
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@12.3.4"
+  "packageManager": "pnpm@12.4.1"
 }
