@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ChatPanel } from '@repo/components';
-import { t } from '@repo/i18n';
 import { useChat, OpenAITransport } from '@repo/composables';
-
+import { t } from '@repo/i18n';
 const { messages, inputValue, loading, handleSend, abort } = useChat({
   transport: new OpenAITransport(
     '<YOUR_OPENAI_API_KEY>',
@@ -20,6 +19,7 @@ const { messages, inputValue, loading, handleSend, abort } = useChat({
     :input-value="inputValue"
     :loading="loading"
     @submit="handleSend"
+    @change="(text) => (inputValue = text)"
     @cancel="abort"
   ></ChatPanel>
   {{ t('greeting', { name: 'John' }) }}
