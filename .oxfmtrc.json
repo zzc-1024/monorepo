@@ -3,5 +3,6 @@
   "ignorePatterns": ["node_modules/", "dist/", "build/"],
   "semi": true,
   "trailingComma": "all",
-  "singleQuote": true
+  "singleQuote": true,
+  "sortImports": true
 }
