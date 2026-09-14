@@ -1,7 +1,7 @@
 <template>
   <McLayout class="chat-layout">
     <McLayoutHeader>
-      <McHeader :logo-img="'/favicon.ico'" :title="'Logo和产品名称'"></McHeader>
+      <McHeader :logo-img="'/favicon.ico'" :title="t('name')"></McHeader>
     </McLayoutHeader>
 
     <McLayoutContent class="chat-content" :auto-scroll="true" :show-scroll-arrow="true">
@@ -12,21 +12,35 @@
           :content="item.content"
           :align="'right'"
           :avatar-config="{ imgSrc: '/favicon.ico' }"
+          :variant="'bordered'"
         >
           <template #top>
             <div style="text-align: right">
-              <span>{{ item.name ?? '用户' }}</span>
+              <span>{{ item.name ?? t('chat.user') }}</span>
             </div>
           </template>
+          <McMarkdownCard :content="item.content"></McMarkdownCard>
         </McBubble>
 
         <!-- AI消息 -->
-        <McBubble v-else :content="item.content" :avatar-config="{ imgSrc: '/favicon.ico' }">
+        <McBubble
+          v-else
+          :content="item.content"
+          :avatar-config="{ imgSrc: '/favicon.ico' }"
+          :variant="'bordered'"
+          :loading="item.content == ''"
+        >
           <template #top>
             <div>
-              <span>{{ item.name ?? '智能助手' }}</span>
+              <span>{{ item.name ?? t('chat.assistant') }}</span>
             </div>
           </template>
+          <McMarkdownCard
+            :enable-think="true"
+            :content="item.content"
+            :typing="true"
+            :typing-options="{ style: 'color' }"
+          ></McMarkdownCard>
         </McBubble>
       </template>
     </McLayoutContent>
@@ -47,14 +61,16 @@
 
 <script setup lang="ts">
 import {
-  McLayout,
-  McLayoutHeader,
-  McLayoutContent,
-  McLayoutSender,
-  McHeader,
   McBubble,
+  McHeader,
   McInput,
+  McLayout,
+  McLayoutContent,
+  McLayoutHeader,
+  McLayoutSender,
+  McMarkdownCard,
 } from '@matechat/core';
+import { t } from '@repo/i18n';
 
 // ================= 类型定义 =================
 export interface MessageItem {

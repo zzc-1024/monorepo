@@ -14,6 +14,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
+    "@repo/i18n": "workspace:*",
     "@tsconfig/node24": "catalog:",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",

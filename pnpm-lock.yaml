@@ -310,6 +310,9 @@ importers:
         specifier: 'catalog:'
         version: 3.5.42(typescript@6.0.3)
     devDependencies:
+      '@repo/i18n':
+        specifier: workspace:*
+        version: link:../i18n
       '@tsconfig/node24':
         specifier: 'catalog:'
         version: 24.0.5
