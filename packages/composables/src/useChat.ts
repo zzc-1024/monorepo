@@ -1,4 +1,5 @@
 import { ref, type Ref } from 'vue';
+
 import type { ChatMessage, UseChatOptions } from './types.ts';
 
 export function useChat(options: UseChatOptions) {

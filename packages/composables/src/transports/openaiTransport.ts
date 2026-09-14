@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+
 import type { ChatTransport, ChatMessage, StreamCallbacks } from '../types';
 
 export class OpenAITransport implements ChatTransport {
