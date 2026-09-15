@@ -263,6 +263,9 @@ importers:
       '@capacitor/core':
         specifier: ^8.5.2
         version: 8.5.2
+      '@repo/assets':
+        specifier: workspace:*
+        version: link:../../public/assets
       '@repo/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -328,6 +331,9 @@ importers:
         specifier: 'catalog:'
         version: 3.5.42(typescript@6.0.3)
     devDependencies:
+      '@repo/assets':
+        specifier: workspace:*
+        version: link:../../public/assets
       '@repo/i18n':
         specifier: workspace:*
         version: link:../i18n
@@ -373,6 +379,8 @@ importers:
       i18next:
         specifier: ^26.4.2
         version: 26.4.2(typescript@6.0.3)
+
+  public/assets: {}
 
 packages:
 

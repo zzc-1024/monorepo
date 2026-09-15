@@ -1,7 +1,7 @@
 <template>
   <McLayout class="chat-layout">
     <McLayoutHeader>
-      <McHeader :logo-img="'/favicon.ico'" :title="t('name')"></McHeader>
+      <McHeader :logo-img="logo" :title="t('name')"></McHeader>
     </McLayoutHeader>
 
     <McLayoutContent class="chat-content" :auto-scroll="true" :show-scroll-arrow="true">
@@ -11,7 +11,7 @@
           v-if="item.role === 'user'"
           :content="item.content"
           :align="'right'"
-          :avatar-config="{ imgSrc: '/favicon.ico' }"
+          :avatar-config="{ imgSrc: logo }"
           :variant="'bordered'"
         >
           <template #top>
@@ -26,7 +26,7 @@
         <McBubble
           v-else
           :content="item.content"
-          :avatar-config="{ imgSrc: '/favicon.ico' }"
+          :avatar-config="{ imgSrc: logo }"
           :variant="'bordered'"
           :loading="item.content == ''"
         >
@@ -70,6 +70,7 @@ import {
   McLayoutSender,
   McMarkdownCard,
 } from '@matechat/core';
+import { logo } from '@repo/assets';
 import { t } from '@repo/i18n';
 
 // ================= 类型定义 =================
