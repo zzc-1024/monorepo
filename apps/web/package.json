@@ -11,13 +11,17 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
     "@repo/components": "workspace:*",
     "@repo/composables": "workspace:*",
     "@repo/i18n": "workspace:*",
     "axios": "^1.20.0",
+    "mermaid": "^12.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
     "@tsconfig/node24": "catalog:",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
