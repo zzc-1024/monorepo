@@ -11,7 +11,7 @@
           v-if="item.role === 'user'"
           :content="item.content"
           :align="'right'"
-          :avatar-config="{ imgSrc: logo }"
+          :avatar-config="{ imgSrc: item.avatar ?? '' }"
           :variant="'bordered'"
         >
           <template #top>
@@ -26,7 +26,7 @@
         <McBubble
           v-else
           :content="item.content"
-          :avatar-config="{ imgSrc: logo }"
+          :avatar-config="{ imgSrc: item.avatar ?? '' }"
           :variant="'bordered'"
           :loading="item.content == ''"
         >
@@ -78,6 +78,7 @@ export interface MessageItem {
   role: 'user' | 'assistant' | string;
   content: string;
   name?: string;
+  avatar?: string;
 }
 
 // ================= Props (接收数据) =================
