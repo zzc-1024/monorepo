@@ -26,5 +26,10 @@ catalog:
   '@types/node': ^24.13.3
   tsx: '^4.23.13'
 
+  # 类型契约
+  '@orpc/contract': '2.0.0-beta.36'
+  '@orpc/server': '2.0.0-beta.36'
+  zod: '^4.6.5'
+
   # 其他工具
   npm-run-all2: ^9.0.2

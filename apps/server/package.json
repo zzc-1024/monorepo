@@ -7,7 +7,10 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "fastify": "catalog:"
+    "@orpc/server": "catalog:",
+    "@repo/api": "workspace:*",
+    "fastify": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
