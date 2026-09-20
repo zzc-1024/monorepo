@@ -281,6 +281,9 @@ importers:
       '@capacitor/core':
         specifier: ^8.5.2
         version: 8.5.2
+      '@repo/assets':
+        specifier: workspace:*
+        version: link:../../public/assets
       '@repo/components':
         specifier: workspace:*
         version: link:../../packages/components
