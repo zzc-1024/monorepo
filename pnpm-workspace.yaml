@@ -14,6 +14,7 @@ catalog:
 
   # 服务端
   fastify: ^5.12.1
+  openai: ^7.15.0
 
   # 构建工具：Vite
   vite: ^8.1.5
