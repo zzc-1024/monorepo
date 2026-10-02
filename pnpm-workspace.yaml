@@ -28,8 +28,9 @@ catalog:
   tsx: '^4.23.13'
 
   # 类型契约
-  '@orpc/contract': '2.0.0-beta.36'
-  '@orpc/server': '2.0.0-beta.36'
+  '@orpc/contract': '2.0.0-beta.40'
+  '@orpc/client': '2.0.0-beta.40'
+  '@orpc/server': '2.0.0-beta.40'
   zod: '^4.6.5'
 
   # 其他工具
