@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ChatPanel } from '@repo/components';
-import { useChat, OpenAITransport } from '@repo/composables';
+import { useChat } from '@repo/composables';
+
+import { BackendTransport } from '@/transports/backendTransport';
+
 const { messages, inputValue, loading, handleSend, abort } = useChat({
-  transport: new OpenAITransport(
-    '<YOUR_OPENAI_API_KEY>',
-    'https://api.deepseek.com',
-    'deepseek-flash',
-  ),
-  initialMessages: [{ role: 'system', content: 'You are a helpful assistant.' }],
+  transport: new BackendTransport({ modelProviderId: '1' }),
+  initialMessages: [],
 });
 </script>
 

@@ -2,6 +2,7 @@ import { createServer } from 'node:http';
 
 import { implement } from '@orpc/server';
 import { RPCHandler } from '@orpc/server/node';
+import { CORSHandlerPlugin } from '@orpc/server/plugins';
 import { contract } from '@repo/api';
 
 import { chatRouter } from './chat.js';
@@ -14,7 +15,9 @@ export const router = os.router({
   chat: chatRouter,
 });
 
-const handler = new RPCHandler(router);
+const handler = new RPCHandler(router, {
+  plugins: [new CORSHandlerPlugin()],
+});
 
 const server = createServer(async (req, res) => {
   const { matched } = await handler.handle(req, res, { prefix: '/rpc' });
