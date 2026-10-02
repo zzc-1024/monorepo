@@ -1,19 +1,30 @@
-import fastify from 'fastify';
+import { createServer } from 'node:http';
 
-const server = fastify();
+import { implement } from '@orpc/server';
+import { RPCHandler } from '@orpc/server/node';
+import { contract } from '@repo/api';
 
-server.get('/', async (_request, _reply) => {
-  return 'Hello, world!';
+import { chatRouter } from './chat.js';
+import { modelProviderRouter } from './modelProvider.js';
+
+const os = implement(contract);
+
+export const router = os.router({
+  modelProvider: modelProviderRouter,
+  chat: chatRouter,
 });
 
-server.get('/ping', async (_request, _reply) => {
-  return 'pong';
-});
+const handler = new RPCHandler(router);
 
-server.listen({ port: 8080 }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
+const server = createServer(async (req, res) => {
+  const { matched } = await handler.handle(req, res, { prefix: '/rpc' });
+
+  if (matched) {
+    return;
   }
-  console.log(`Server listening at ${address}`);
+
+  res.statusCode = 404;
+  res.end('Not found');
 });
+
+server.listen(3000, '127.0.0.1', () => console.log('Listening on 127.0.0.1:3000'));
