@@ -39,7 +39,7 @@
             :enable-think="true"
             :content="item.content"
             :typing="true"
-            :typing-options="{ style: 'color' }"
+            :typing-options="{ style: 'color', interval: 1 }"
           ></McMarkdownCard>
         </McBubble>
       </template>
