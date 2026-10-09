@@ -2,10 +2,11 @@
 import { ChatPanel } from '@repo/components';
 import { useChat } from '@repo/composables';
 
+import { client } from '@/client';
 import { BackendTransport } from '@/transports/backendTransport';
 
 const { messages, inputValue, loading, handleSend, abort } = useChat({
-  transport: new BackendTransport({ modelProviderId: '1' }),
+  transport: new BackendTransport({ client, modelProviderId: '1' }),
   initialMessages: [],
 });
 </script>

@@ -1,13 +1,11 @@
-import { createORPCClient } from '@orpc/client';
-import { RPCLink } from '@orpc/client/fetch';
-import type { RouterContractClient } from '@orpc/contract';
-import type { contract } from '@repo/api';
 import type { ChatMessage, ChatTransport, StreamCallbacks } from '@repo/composables';
+
+import type { ORPCClient } from '@/client';
 
 /** BackendTransport 配置项 */
 export interface BackendTransportOptions {
-  /** 后端 oRPC 服务地址路径（不含 origin），需与后端 handler 的 prefix 一致，默认 '/rpc' */
-  baseURL?: `/${string}`;
+  /** 类型安全的 oRPC 客户端实例，由使用方创建并注入 */
+  client: ORPCClient;
   /** 使用的模型提供方 id（对应后端数据库中的记录） */
   modelProviderId: string;
 }
@@ -19,14 +17,13 @@ export interface BackendTransportOptions {
  * 由后端持有 API Key 并调用真正的模型服务，避免密钥暴露在前端。
  */
 export class BackendTransport implements ChatTransport {
-  private client: RouterContractClient<typeof contract>;
+  private client: ORPCClient;
   private modelProviderId: string;
 
   constructor(options: BackendTransportOptions) {
-    const { baseURL = '/rpc', modelProviderId } = options;
+    const { client, modelProviderId } = options;
 
-    const link = new RPCLink({ origin: 'http://127.0.0.1:3000', url: baseURL });
-    this.client = createORPCClient(link);
+    this.client = client;
     this.modelProviderId = modelProviderId;
   }
 
